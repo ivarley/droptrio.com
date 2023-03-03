@@ -1,2 +1,3 @@
 # droptrio.com
-Drop Trio website
+
+This is the public repo for the Drop Trio website
