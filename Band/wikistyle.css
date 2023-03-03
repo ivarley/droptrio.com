@@ -1,0 +1,30 @@
+BODY {
+	font-family: Verdana; font-size: 90%; background-color: black; color: white;
+}
+a {
+	color: #9999FF; text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+.wiki-name-ref {
+	color: #CCCCCC; font-size: 75%;
+}
+
+.parent-nodes {
+	color: #CCCCCC; font-size: 75%;
+}
+
+.property {
+	color: #CCCCCC; font-size: 75%;
+}
+
+.script {
+	color: #CCCCCC; font-size: 75%;
+}
+
+.todo {
+	font-weight: bold;
+}
+

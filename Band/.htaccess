@@ -1,0 +1,5 @@
+AuthType	basic
+AuthName	"Secured area"
+AuthUserFile	/hsphere/local/home/ivarley/.htmaster/.ok_user
+Require	valid-user
+
