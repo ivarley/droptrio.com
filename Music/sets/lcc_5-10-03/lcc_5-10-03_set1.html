@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Drop Trio - Last Concert Caf&eacute;, 5/10/03 (First Set)</title>
+	<style>
+		body {
+			background: black url(/Main/dropmainbkgd.jpg) repeat;
+			color: white;
+			font-family: Arial, Helvetica, Geneva, Swiss, SunSans-Regular, sans-serif;
+			margin: 20px;
+		}
+		a { color: #CCFF99; }
+		.wrap { max-width: 696px; }
+		h1 { font-size: 18px; margin: 0 0 4px; }
+		h2 { font-size: 14px; color: #d8d8d8; margin: 0 0 16px; font-weight: normal; }
+		audio { width: 100%; margin-bottom: 12px; }
+		ol.tracks { list-style: none; padding: 0; margin: 0; border-top: 1px solid #333; }
+		ol.tracks li {
+			padding: 6px 8px;
+			border-bottom: 1px solid #333;
+			cursor: pointer;
+			font-size: 13px;
+			display: flex;
+			justify-content: space-between;
+			gap: 12px;
+		}
+		ol.tracks li:hover { background: #1a1a1a; }
+		ol.tracks li.playing { background: #2a3a1a; color: #CCFF99; }
+		ol.tracks li .num { color: #888; margin-right: 8px; }
+		ol.tracks li .artist { color: #989898; font-size: 11px; }
+		.back { margin-top: 20px; font-size: 12px; }
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<h1>Last Concert Caf&eacute;, 5/10/03</h1>
+		<h2>First Set</h2>
+
+		<audio id="player" controls preload="none"></audio>
+
+		<ol class="tracks" id="tracks"></ol>
+
+		<div class="back"><a href="/Music/lcc_5-10-03.html">&laquo; Back to show page</a></div>
+	</div>
+
+	<script>
+		const tracks = [
+			{ title: "Cissy Strut",           artist: "The Meters",               file: "01-Cissy_Strut.mp3" },
+			{ title: "Second First",          artist: "",                         file: "02-Second_First.mp3" },
+			{ title: "Wreck Of The Zephyr",   artist: "",                         file: "03-Zephyr.mp3" },
+			{ title: "Invisible Pants",       artist: "",                         file: "04-Invisible_Pants.mp3" },
+			{ title: "Wet Dog",               artist: "",                         file: "05-Wet_Dog.mp3" },
+			{ title: "Lefty's Alone",         artist: "",                         file: "06-Lefty.mp3" },
+			{ title: "Wake The Whale",        artist: "",                         file: "07-Wake_The_Whale.mp3" },
+			{ title: "Wallawalla",            artist: "",                         file: "08-Wallawalla.mp3" },
+			{ title: "Bubblehouse",           artist: "Medeski, Martin & Wood",   file: "09-Bubblehouse.mp3" },
+			{ title: "Cars Trucks Buses",     artist: "Phish",                    file: "10-Cars_Trucks_Buses.mp3" },
+			{ title: "Abbey Rhodes",          artist: "",                         file: "11-Abbey_Rhodes.mp3" },
+			{ title: "Melody-Melody",         artist: "",                         file: "12-Melody_Melody.mp3" },
+			{ title: "Morning Cognac",        artist: "",                         file: "13-Morning_Cognac.mp3" },
+			{ title: "Martnini",              artist: "",                         file: "14-Martini.mp3" },
+			{ title: "Not To Touch The Earth", artist: "The Doors",               file: "15-Not_To_Touch.mp3" }
+		];
+
+		const player = document.getElementById("player");
+		const list = document.getElementById("tracks");
+		let current = -1;
+
+		tracks.forEach((t, i) => {
+			const li = document.createElement("li");
+			const left = document.createElement("span");
+			left.innerHTML = '<span class="num">' + String(i + 1).padStart(2, "0") + '.</span>' + t.title;
+			const right = document.createElement("span");
+			right.className = "artist";
+			right.textContent = t.artist;
+			li.appendChild(left);
+			li.appendChild(right);
+			li.addEventListener("click", () => play(i));
+			list.appendChild(li);
+		});
+
+		function play(i) {
+			if (i < 0 || i >= tracks.length) return;
+			current = i;
+			player.src = tracks[i].file;
+			player.play();
+			[...list.children].forEach((el, idx) => el.classList.toggle("playing", idx === i));
+		}
+
+		player.addEventListener("ended", () => play(current + 1));
+	</script>
+</body>
+</html>
