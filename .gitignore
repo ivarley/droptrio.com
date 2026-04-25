@@ -1,0 +1,12 @@
+.env
+.env.local
+.DS_Store
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Audio files moved to R2 (served from https://media.droptrio.com)
+*.mp3
+*.wav
+*.rm
+*.m4a
