@@ -5,6 +5,11 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 
+# Claude Code per-machine state (settings.json without .local would be the
+# shared/checked-in version, if you ever want one)
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+
 # Audio files moved to R2 (served from https://media.droptrio.com)
 *.mp3
 *.wav
